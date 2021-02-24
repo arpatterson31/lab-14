@@ -15,7 +15,7 @@ function populateForm() {
     let option = document.createElement('option');
     option.textContent = Product.allProducts[i].name;
     // option.value = Product.allProducts[i].name;
-    option.setAttribute('value', Product.allProducts[i].name)
+    option.setAttribute('value', Product.allProducts[i].name);
     selectElement.appendChild(option);
   }
 
@@ -37,7 +37,7 @@ function handleSubmit(event) {
 
 }
 
-// TODO: Add the selected item and quantity to the cart
+// DONE: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // DONE: suss out the item picked from the select list
   let item = document.getElementById('items').value;
@@ -50,12 +50,28 @@ function addSelectedItemToCart() {
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() {
+  for (let i = 0; i < cart.length; i++) {
+    let cartCount = 0;
+    cartCount = cartCount + parseInt(cart[i].quantity);
+    let selectSpan = document.getElementById('itemCount');
+    selectSpan.textContent = cartCount; // ??? not sure how this is to be done
+    selectSpan.appendChild(cartCount);
+  }
+
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
+  let cartPreviewItem = document.querySelector('label span:first-child');
+  let cartPreviewQuantity = document.querySelector('label span:nth-child(2)');
   // TODO: Add a new element to the cartContents div with that information
+  for (let i = 0; i < cart.length; i++){
+    let itemElement = document.createElement('p');
+    itemElement.textContent = cart[i].item;
+    cartPreviewItem.appendChild(itemElement); // why can't we append correctly!?!?!
+  }
 }
 
 // Set up the "submit" event listener on the form.
