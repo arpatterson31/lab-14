@@ -51,14 +51,7 @@ function addSelectedItemToCart() {
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {
-  for (let i = 0; i < cart.length; i++) {
-    let cartCount = 0;
-    cartCount = cartCount + parseInt(cart[i].quantity);
-    let selectSpan = document.getElementById('itemCount');
-    selectSpan.textContent = cartCount; // ??? not sure how this is to be done
-    selectSpan.appendChild(cartCount);
-  }
-
+  document.getElementById('itemCount').textContent = `: There are ${cart.items.length} item(s) in cart`;
 }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
@@ -66,6 +59,7 @@ function updateCartPreview() {
   // TODO: Get the item and quantity from the form
   let cartPreviewItem = document.querySelector('label span:first-child');
   let cartPreviewQuantity = document.querySelector('label span:nth-child(2)');
+
   // TODO: Add a new element to the cartContents div with that information
   for (let i = 0; i < cart.length; i++){
     let itemElement = document.createElement('p');
