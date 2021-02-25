@@ -49,23 +49,27 @@ function addSelectedItemToCart() {
   cart.addItem(item, quantity); // Ryan - this isn't done!!!!!!
 }
 
-// TODO: Update the cart count in the header nav with the number of items in the Cart
+// TODO: Update the cart count in the header nav with the number of items in the Cart - DONE
 function updateCounter() {
   document.getElementById('itemCount').textContent = `: There are ${cart.items.length} item(s) in cart`;
 }
 
-// TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
+// TODO: As you add items into the cart, show them (item & quantity) in the cart preview div - DONE
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
-  let cartPreviewItem = document.querySelector('label span:first-child');
-  let cartPreviewQuantity = document.querySelector('label span:nth-child(2)');
+  let cartPreviewItem = document.getElementById('items').value;
+  let cartPreviewQuantity = document.getElementById('quantity').value;
+  let cartContent = document.getElementById('cartContents');
 
-  // TODO: Add a new element to the cartContents div with that information
-  for (let i = 0; i < cart.length; i++){
-    let itemElement = document.createElement('p');
-    itemElement.textContent = cart[i].item;
-    cartPreviewItem.appendChild(itemElement); // why can't we append correctly!?!?!
-  }
+  // TODO: Add a new element to the cartContents div with that information - DONE
+
+  let itemElement = document.createElement('p');
+  itemElement.textContent = cartPreviewItem;
+  cartContent.appendChild(itemElement);
+
+  let itemQuantity = document.createElement('p');
+  itemQuantity.textContent = cartPreviewQuantity;
+  cartContent.appendChild(itemQuantity);
 }
 
 // Set up the "submit" event listener on the form.
